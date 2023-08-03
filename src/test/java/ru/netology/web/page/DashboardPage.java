@@ -12,8 +12,8 @@ import static com.codeborne.selenide.Selenide.$$;
 
 public class DashboardPage {
 
-    private final String balanceStart = "баланс: ";
-    private final String balanceFinish = " р.";
+    private final String balanceStart = ", баланс: ";
+    private final String balanceFinish = " р. ";
     private final SelenideElement heading = $("[data-test-id=dashboard]");
     private ElementsCollection cards = $$(".list__item div");
 
@@ -22,7 +22,7 @@ public class DashboardPage {
     }
 
     public int getCardBalance(DataHelper.CardInfo cardInfo) {
-        val text = cards.findBy(text(cardInfo.getCardNumber().substring(15))).getText();
+        var text = cards.findBy(text(cardInfo.getCardNumber().substring(15))).getText();
         return extractBalance(text);
     }
 
