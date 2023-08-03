@@ -11,6 +11,10 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
 public class DashboardPage {
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3417efb82cdf9d59d0e161d62f5e9f6a648dabd3
     private final String balanceStart = "баланс: ";
     private final String balanceFinish = " р.";
     private final SelenideElement heading = $("[data-test-id=dashboard]");
