@@ -2,7 +2,6 @@ package ru.netology.web.page;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import lombok.val;
 import ru.netology.web.data.DataHelper;
 
 import static com.codeborne.selenide.Condition.*;
@@ -22,22 +21,18 @@ public class DashboardPage {
     }
 
     public int getCardBalance(DataHelper.CardInfo cardInfo) {
-        val text = cards.findBy(text(cardInfo.getCardNumber().substring(15))).getText();
+        var text = cards.findBy(text(cardInfo.getCardNumber().substring(15))).getText();
         return extractBalance(text);
     }
-
     public TransferPage selectCardToTransfer(DataHelper.CardInfo cardInfo) {
         cards.findBy(attribute("data-test-id", cardInfo.getTestId())).
                 $("button").click();
         return new TransferPage();
     }
-
     private int extractBalance(String text) {
-        val start = text.indexOf(balanceStart);
-        val finish = text.indexOf(balanceFinish);
-        val value = text.substring(start + balanceStart.length(), finish);
+        var start = text.indexOf(balanceStart);
+        var finish = text.indexOf(balanceFinish);
+        var value = text.substring(start + balanceStart.length(), finish);
         return Integer.parseInt(value);
     }
-
-
 }
